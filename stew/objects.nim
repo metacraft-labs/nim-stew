@@ -7,6 +7,12 @@
 #
 # at your option. This file may not be copied, modified, or distributed except according to those terms.
 
+when defined(nimPreviewSlimSystem):
+  # Under slim-system, `doAssert` is not re-exported by `system`;
+  # import it from `std/assertions` (where it is defined) so this
+  # module compiles in both slim and non-slim configurations.
+  import std/assertions
+
 {.push raises: [].}
 
 import std/macros, ./[assign2, enums]

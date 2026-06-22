@@ -8,6 +8,12 @@
 
 ## This module implements Base64 encoding and decoding procedures.
 
+when defined(nimPreviewSlimSystem):
+  # Under slim-system, `doAssert` is not re-exported by `system`;
+  # import it from `std/assertions` (where it is defined) so this
+  # module compiles in both slim and non-slim configurations.
+  import std/assertions
+
 type
   Base64Status* {.pure.} = enum
     Error,

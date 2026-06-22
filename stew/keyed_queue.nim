@@ -22,6 +22,12 @@
 ## semantics, this means that `=` performs a deep copy of the allocated queue
 ## which is refered to the deep copy semantics of the underlying table driver.
 
+when defined(nimPreviewSlimSystem):
+  # Under slim-system, `doAssert` is not re-exported by `system`;
+  # import it from `std/assertions` (where it is defined) so this
+  # module compiles in both slim and non-slim configurations.
+  import std/assertions
+
 {.push raises: [].}
 
 import std/tables, pkg/results

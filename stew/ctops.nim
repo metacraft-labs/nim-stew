@@ -9,6 +9,12 @@
 ## This module implements different operations which will execute in amount of
 ## time (or memory space) independent of the input size.
 
+when defined(nimPreviewSlimSystem):
+  # Under slim-system, `doAssert` is not re-exported by `system`;
+  # import it from `std/assertions` (where it is defined) so this
+  # module compiles in both slim and non-slim configurations.
+  import std/assertions
+
 type
   CT* = object
 

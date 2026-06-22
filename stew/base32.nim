@@ -9,6 +9,12 @@
 ## This module implements Base32 encoding and decoding procedures.
 ## This module supports RFC4648's Base32.
 
+when defined(nimPreviewSlimSystem):
+  # Under slim-system, `doAssert` is not re-exported by `system`;
+  # import it from `std/assertions` (where it is defined) so this
+  # module compiles in both slim and non-slim configurations.
+  import std/assertions
+
 type
   Base32Status* {.pure.} = enum
     Error,

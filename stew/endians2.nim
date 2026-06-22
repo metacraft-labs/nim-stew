@@ -18,6 +18,12 @@
 # hold values of specific endianness and read them out with `fromBytes` when the
 # integer interpretation of the bytes is needed.
 
+when defined(nimPreviewSlimSystem):
+  # Under slim-system, `doAssert` is not re-exported by `system`;
+  # import it from `std/assertions` (where it is defined) so this
+  # module compiles in both slim and non-slim configurations.
+  import std/assertions
+
 {.push raises: [].}
 
 type

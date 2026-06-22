@@ -9,6 +9,12 @@
 ## This module implements Base58 encoding and decoding procedures.
 ## This module supports two variants of Base58 encoding (Bitcoin and Flickr).
 
+when defined(nimPreviewSlimSystem):
+  # Under slim-system, `doAssert` is not re-exported by `system`;
+  # import it from `std/assertions` (where it is defined) so this
+  # module compiles in both slim and non-slim configurations.
+  import std/assertions
+
 type
   Base58Status* {.pure.} = enum
     Error,
